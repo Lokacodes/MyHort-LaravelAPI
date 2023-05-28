@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('alat__io_t_s', function (Blueprint $table) {
             $table->id();
-            $table->float('sensor_ph');
-            $table->float('sensor_kepekatan');
-            $table->float('sensor_penuh');
-            $table->boolean('solenoid_tandon');
-            $table->boolean('solenoid_siram');
+            $table->float('sensor_ph')->default(0);
+            $table->float('sensor_kepekatan')->default(0);
+            $table->float('sensor_penuh')->default(0);
+            $table->boolean('solenoid_tandon')->default(0);
+            $table->boolean('solenoid_siram')->default(0);
             $table->integer('id_kebun');
             $table->timestamps();
         });

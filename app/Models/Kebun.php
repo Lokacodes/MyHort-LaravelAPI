@@ -16,9 +16,11 @@ class Kebun extends Model
         'id_user'
     ];
 
-    public function user()
+    //get all data from table which id_user corresponds with the specified id_user
+
+    public function tertentu()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->where('id_user', auth()->user()->id)->get();
     }
 
 

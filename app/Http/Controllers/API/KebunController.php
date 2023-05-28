@@ -17,9 +17,18 @@ class KebunController extends Controller
      */
     public function index()
     {
-        $kebuns = Kebun::all();
-        return response(['kebuns' => KebunResource::collection($kebuns), 'message' => "Data successfully retrieved"], 200);
+        $kebuns = new Kebun;
+        $data = $kebuns->tertentu();
+        return response(['kebun' => KebunResource::collection($data), 'message' => "Data successfully retrieved"], 200);
     }
+
+    public function all()
+    {
+        $kebuns = kebun::all();
+        return response(['kebun' => KebunResource::collection($kebuns), 'message' => "Data successfully retrieved"], 200);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,8 +46,8 @@ class KebunController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'nama_kebun' => 'required|max255',
-            'lokasi_kebun' => 'required||max255',
+            'nama_kebun' => 'required|max:255',
+            'lokasi_kebun' => 'required|max:255',
             'id_user' => 'required',
         ]);
 
