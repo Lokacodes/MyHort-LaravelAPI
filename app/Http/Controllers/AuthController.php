@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\Guard;
 use Laravel\Passport\RefreshToken;
 use Laravel\Passport\Token;
+use PhpParser\Node\Stmt\Return_;
 
 class AuthController extends Controller
 {
@@ -23,9 +24,9 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:60',
-            'email' => 'required|unique:users',
-            'password' => 'required|max:16|confirmed',
+            'name' => 'required|max:60|min:5',
+            'email' => 'required|unique:users|email',
+            'password' => 'required|max:16|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         ]);
 
         $validatedData['password'] = Hash::make($request->password);
@@ -55,14 +56,18 @@ class AuthController extends Controller
             return response(['message' => 'email or password is not recognised'], 400);
         }
 
-        $accessToken = auth()->user()->createToken('authToken')->accessToken;
+        $user = auth()->user();
+        $accessToken = $user->createToken('authToken')->accessToken;
+        // $user->forceFill([
+        //     'access_token' => $accessToken
+        // ])->save();
 
         return response(
             [
                 'user' => auth()->user(),
                 'access_token' => $accessToken
             ],
-            201
+            200
         );
     }
 
@@ -83,9 +88,9 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        Return auth()->user();
     }
 
     /**
