@@ -39,12 +39,12 @@ class AlatIotController extends Controller
     /**
      * Store a newly created Alat in database.
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'id_kebun' => 'required',
+            'id_kebun' => 'required|unique:alat__io_t_s,id_kebun',
         ]);
 
         if ($validator->fails()){
@@ -79,7 +79,7 @@ class AlatIotController extends Controller
     {
         $alat->update($request->all());
         return response(["alats" => new alatResource($alat),'message'=> 'data successfully updated'],200);//diwehi 200?
-    }
+    } 
 
     /**
      * Remove the specified Alat from database.

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\API\KebunController;
+use App\Http\Controllers\API\AlatIotController;
+use App\Http\Controllers\API\JadwalSiramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +36,6 @@ Route::get('allKebuns', [KebunController::class,'all'])->middleware('auth:api');
 
 Route::apiResource('alats', AlatIotController::class)->middleware('auth:api');  //alat resource
 Route::get('allAlats', [AlatIotController::class,'all'])->middleware('auth:api'); //get all alats
+
+Route::apiResource('jadwals', JadwalSiramController::class)->middleware('auth:api');  //alat resource
+Route::get('allJadwals', [JadwalSiramController::class,'all'])->middleware('auth:api'); //get all alats
