@@ -30,6 +30,8 @@ Route::post('login',[AuthController::class,'login']); //login
 Route::get('getAuthUser',[AuthController::class,'show'])->middleware('auth:api'); //get auth user
 Route::get('getAll',[AuthController::class,'index'])->middleware('auth:api'); //get all users
 Route::post('logout',[AuthController::class,'logout'])->middleware('auth:api'); //logout
+Route::patch('update',[AuthController::class,'update'])->middleware('auth:api'); //update user
+Route::delete('delete',[AuthController::class,'destroy'])->middleware('auth:api'); //delete user
 
 Route::apiResource('kebuns', KebunController::class)->middleware('auth:api'); //kebun resource
 Route::get('allKebuns', [KebunController::class,'all'])->middleware('auth:api'); //get all kebuns

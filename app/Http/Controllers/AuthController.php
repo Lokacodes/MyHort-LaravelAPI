@@ -10,6 +10,7 @@ use Laravel\Passport\Guard;
 use Laravel\Passport\RefreshToken;
 use Laravel\Passport\Token;
 use PhpParser\Node\Stmt\Return_;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -53,7 +54,7 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($loginData)) {
-            return response(['message' => 'email or password is not recognised'], 400);
+            return response(['message' => 'email or password is not recognised'], 401);
         }
 
         $user = auth()->user();
@@ -104,16 +105,22 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $input = $request->all();
+        $user = auth()->user();
+        $user->update($input);
+        return response(["user" => new UserResource($user),'message'=> 'User data successfully updated'],200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        $user = auth()->user();
+        $this->logout();
+        $user->delete();
+        return response(["user" => new UserResource($user),'message'=> 'User data successfully deleted'],200);
     }
 }
