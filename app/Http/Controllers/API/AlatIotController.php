@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Resources\Alatresource;
 
+/**
+ * @group Alat_IoT Management
+ * 
+ * APIs for managing Alat_IoT
+ */
+
 class AlatIotController extends Controller
 {
     /**

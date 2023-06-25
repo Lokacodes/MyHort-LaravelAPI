@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 
+/**
+ * @group JadwalSiram Management
+ * 
+ * APIs for managing JadwalSiram
+ */
+
 class JadwalSiramController extends Controller
 {
     public function index(Request $request)
@@ -110,9 +116,6 @@ class JadwalSiramController extends Controller
 
         if ($data['jam_on'] == $data['jam_off']) {
             return response(['message' => 'ON and OFF time cannot be the same'],401);
-        }
-        else if ($data['jam_on'] > $data['jam_off']) {
-            return response(['message' => 'ON time cannot be greater than OFF time'],401);
         }
 
         $jadwalSiramObj = new JadwalSiram();

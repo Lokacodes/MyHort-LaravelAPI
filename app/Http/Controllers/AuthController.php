@@ -12,15 +12,25 @@ use Laravel\Passport\Token;
 use PhpParser\Node\Stmt\Return_;
 use App\Http\Resources\UserResource;
 
+/**
+ * @group User Management
+ * 
+ * APIs for managing users
+ */
+
 class AuthController extends Controller
 {
+    /**
+     * Display the list of users
+     */
     public function index()
     {
         return User::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Register a new user
+     * 
      */
     public function register(Request $request)
     {
@@ -41,13 +51,16 @@ class AuthController extends Controller
                 'user' => $user,
                 'access_token' => $accessToken
             ],
-            201
+            200
         );
     }
 
-
+    /**
+         * check if user is authenticated
+         */
     public function login(Request $request)
     {
+        
         $loginData = $request->validate([
             'email' => 'required',
             'password' => 'required'

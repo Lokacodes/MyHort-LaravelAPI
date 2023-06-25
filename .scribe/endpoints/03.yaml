@@ -1,0 +1,257 @@
+name: 'Alat_IoT Management'
+description: |-
+
+  APIs for managing Alat_IoT
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/alats
+    metadata:
+      groupName: 'Alat_IoT Management'
+      groupDescription: |-
+
+        APIs for managing Alat_IoT
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the Alat_IoT that corresponds with the specified kebun.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/alats
+    metadata:
+      groupName: 'Alat_IoT Management'
+      groupDescription: |-
+
+        APIs for managing Alat_IoT
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created Alat in database.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      id_kebun:
+        name: id_kebun
+        description: ''
+        required: true
+        example: porro
+        type: string
+        custom: []
+    cleanBodyParameters:
+      id_kebun: porro
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/alats/{id}'
+    metadata:
+      groupName: 'Alat_IoT Management'
+      groupDescription: |-
+
+        APIs for managing Alat_IoT
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified Alat that corresponds with the specified id.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the alat.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/alats/{id}'
+    metadata:
+      groupName: 'Alat_IoT Management'
+      groupDescription: |-
+
+        APIs for managing Alat_IoT
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified Alat that corresponds with the specified id in database.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the alat.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/alats/{id}'
+    metadata:
+      groupName: 'Alat_IoT Management'
+      groupDescription: |-
+
+        APIs for managing Alat_IoT
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified Alat from database.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the alat.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/allAlats
+    metadata:
+      groupName: 'Alat_IoT Management'
+      groupDescription: |-
+
+        APIs for managing Alat_IoT
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Resources\KebunResource;
 
+/**
+ * @group Kebun Management
+ * 
+ * APIs for managing kebun
+ */
+
 class KebunController extends Controller
 {
     /**

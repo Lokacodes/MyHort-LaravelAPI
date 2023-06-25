@@ -1,0 +1,273 @@
+name: 'JadwalSiram Management'
+description: |-
+
+  APIs for managing JadwalSiram
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/jadwals
+    metadata:
+      groupName: 'JadwalSiram Management'
+      groupDescription: |-
+
+        APIs for managing JadwalSiram
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/jadwals
+    metadata:
+      groupName: 'JadwalSiram Management'
+      groupDescription: |-
+
+        APIs for managing JadwalSiram
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      id_alat:
+        name: id_alat
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+      jam_on:
+        name: jam_on
+        description: ''
+        required: true
+        example: in
+        type: string
+        custom: []
+      jam_off:
+        name: jam_off
+        description: ''
+        required: true
+        example: vitae
+        type: string
+        custom: []
+    cleanBodyParameters:
+      id_alat: quia
+      jam_on: in
+      jam_off: vitae
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/jadwals/{id}'
+    metadata:
+      groupName: 'JadwalSiram Management'
+      groupDescription: |-
+
+        APIs for managing JadwalSiram
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified Alat that corresponds with the specified id.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the jadwal.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/jadwals/{id}'
+    metadata:
+      groupName: 'JadwalSiram Management'
+      groupDescription: |-
+
+        APIs for managing JadwalSiram
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified Alat that corresponds with the specified id in database.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the jadwal.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/jadwals/{id}'
+    metadata:
+      groupName: 'JadwalSiram Management'
+      groupDescription: |-
+
+        APIs for managing JadwalSiram
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified Alat from database.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the jadwal.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/allJadwals
+    metadata:
+      groupName: 'JadwalSiram Management'
+      groupDescription: |-
+
+        APIs for managing JadwalSiram
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the form for creating a new resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
