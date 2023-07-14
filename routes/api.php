@@ -36,7 +36,7 @@ Route::delete('delete',[AuthController::class,'destroy'])->middleware('auth:api'
 Route::apiResource('kebuns', KebunController::class)->middleware('auth:api'); //kebun resource
 Route::get('allKebuns', [KebunController::class,'all'])->middleware('auth:api'); //get all kebuns
 
-Route::apiResource('alats', AlatIotController::class)->middleware('auth:api');  //alat resource
+Route::apiResource('alats', AlatIotController::class);  //alat resource
 Route::get('allAlats', [AlatIotController::class,'all'])->middleware('auth:api'); //get all alats
 
 Route::apiResource('jadwals', JadwalSiramController::class)->middleware('auth:api');  //alat resource

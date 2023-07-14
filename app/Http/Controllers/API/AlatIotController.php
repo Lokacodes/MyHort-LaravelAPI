@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use App\Http\Resources\Alatresource;
+use App\Http\Resources\AlatResource;
 
 /**
  * @group Alat_IoT Management
@@ -25,13 +25,17 @@ class AlatIotController extends Controller
     {
         $alats = new Alat_IoT;
         $data = $alats->kebun($request->id_kebun);
-        return response(['alats' => alatResource::collection($data), 'message' => "Data successfully retrieved"], 200);
+        $dataLength = count($data);
+        if ($dataLength == 0) {
+            return response(['message'=> 'garden not found'],404);
+        }
+        return response(['alats' => AlatResource::collection($data), 'message' => "Data successfully retrieved"], 200);
     }
 
     public function all()
     {
         $alats = Alat_IoT::all();
-        return response(['kebun' => Alatresource::collection($alats), 'message' => "Data successfully retrieved"], 200);
+        return response(['kebun' => AlatResource::collection($alats), 'message' => "Data successfully retrieved"], 200);
     }
 
     /**
@@ -59,7 +63,7 @@ class AlatIotController extends Controller
 
         $alat = Alat_IoT::create($data);
 
-        return response(["alats" => new alatResource($alat),'message'=> 'data successfully added'],200);//diwehi 200?
+        return response(["alats" => new AlatResource($alat),'message'=> 'data successfully added'],200);//diwehi 200?
     }
 
     /**
@@ -67,7 +71,12 @@ class AlatIotController extends Controller
      */
     public function show(Alat_IoT $alat)//string $id
     {
-        return response(["alats" => new alatResource($alat),'message'=> 'data successfully retrieved'],200);//diwehi 200?
+        $alats = new Alat_IoT;
+        $data = $alats->kebun($alat);
+        if ($data === null) {
+            return response(['message'=> 'garden not found'],404);
+        }
+        return response(["alats" => new AlatResource($alat),'message'=> 'data successfully retrieved'],200);//diwehi 200?
     }
 
     /**
@@ -84,7 +93,7 @@ class AlatIotController extends Controller
     public function update(Request $request, Alat_IoT $alat)
     {
         $alat->update($request->all());
-        return response(["alats" => new alatResource($alat),'message'=> 'data successfully updated'],200);//diwehi 200?
+        return response(["alats" => new AlatResource($alat),'message'=> 'data successfully updated'],200);//diwehi 200?
     } 
 
     /**

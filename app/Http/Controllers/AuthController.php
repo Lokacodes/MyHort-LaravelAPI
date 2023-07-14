@@ -11,6 +11,7 @@ use Laravel\Passport\RefreshToken;
 use Laravel\Passport\Token;
 use PhpParser\Node\Stmt\Return_;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @group User Management
@@ -34,15 +35,30 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        // $validatedData = Validator::make($request->all(), [
+        //     'name' => 'required|max:60|min:5',
+        //     'email' => 'required|unique:users|email',
+        //     'password' => 'required|max:16|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+        // ]);
+        
         $validatedData = $request->validate([
             'name' => 'required|max:60|min:5',
             'email' => 'required|unique:users|email',
             'password' => 'required|max:16|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         ]);
+        
+        // if ($validatedData->fails()) {
+    
+        // //pass validator errors as errors object for ajax response
 
-        $validatedData['password'] = Hash::make($request->password);
+        //   return response(['errors'=>$validatedData->errors()],422);
+        // }
+        
+        $data = $request->all();
 
-        $user = User::create($validatedData);
+        $data['password'] = Hash::make($request->password);
+
+        $user = User::create($data);
 
         $accessToken = $user->createToken('authToken')->accessToken;
 

@@ -45,10 +45,10 @@ class JadwalSiramController extends Controller
         $data['jam_off'] = date('H:i:s', $data['jam_off']);
 
         if ($data['jam_on'] == $data['jam_off']) {
-            return response(['message' => 'ON and OFF time cannot be the same'],401);
+            return response(['message' => 'ON and OFF time cannot be the same'],422);
         }
         else if ($data['jam_on'] > $data['jam_off']) {
-            return response(['message' => 'ON time cannot be greater than OFF time'],401);
+            return response(['message' => 'ON time cannot be greater than OFF time'],422);
         }
 
         $jadwalSiramObj = new JadwalSiram();
@@ -56,19 +56,19 @@ class JadwalSiramController extends Controller
         
         foreach ($alljadwal as $jadwals){
             if ($data['jam_on'] == $jadwals['jam_on'] || $data['jam_off'] == $jadwals['jam_off']) {
-                return response(['message' => 'This schedule is colliding with another schedule'],401);
+                return response(['message' => 'This schedule is colliding with another schedule'],422);
             }
 
             else if ($data['jam_on'] > $jadwals['jam_on'] && $data['jam_on'] < $jadwals['jam_off']) {
-                return response(['message' => 'There is already a schedule in this time'],401);
+                return response(['message' => 'There is already a schedule in this time'],422);
             }
 
             else if ($data['jam_off'] > $jadwals['jam_on'] && $data['jam_off'] < $jadwals['jam_off']) {
-                return response(['message' => 'There is already a schedule in this time'],401);
+                return response(['message' => 'There is already a schedule in this time'],422);
             }
 
             else if ($data['jam_on'] < $jadwals['jam_on'] && $data['jam_off'] > $jadwals['jam_off']) {
-                return response(['message' => 'This schedule is colliding with another schedule'],401);
+                return response(['message' => 'This schedule is colliding with another schedule'],422);
             }
         }
         
@@ -115,7 +115,7 @@ class JadwalSiramController extends Controller
         $data['jam_off'] = date('H:i:s', $data['jam_off']);
 
         if ($data['jam_on'] == $data['jam_off']) {
-            return response(['message' => 'ON and OFF time cannot be the same'],401);
+            return response(['message' => 'ON and OFF time cannot be the same'],422);
         }
 
         $jadwalSiramObj = new JadwalSiram();
@@ -123,19 +123,19 @@ class JadwalSiramController extends Controller
         
         foreach ($alljadwal as $jadwals){
             if ($data['jam_on'] == $jadwals['jam_on'] || $data['jam_off'] == $jadwals['jam_off']) {
-                return response(['message' => 'This schedule is colliding with another schedule'],401);
+                return response(['message' => 'This schedule is colliding with another schedule'],422);
             }
 
             else if ($data['jam_on'] > $jadwals['jam_on'] && $data['jam_on'] < $jadwals['jam_off']) {
-                return response(['message' => 'There is already a schedule in this time'],401);
+                return response(['message' => 'There is already a schedule in this time'],422);
             }
 
             else if ($data['jam_off'] > $jadwals['jam_on'] && $data['jam_off'] < $jadwals['jam_off']) {
-                return response(['message' => 'There is already a schedule in this time'],401);
+                return response(['message' => 'There is already a schedule in this time'],422);
             }
 
             else if ($data['jam_on'] < $jadwals['jam_on'] && $data['jam_off'] > $jadwals['jam_off']) {
-                return response(['message' => 'This schedule is colliding with another schedule'],401);
+                return response(['message' => 'This schedule is colliding with another schedule'],422);
             }
         }
 
