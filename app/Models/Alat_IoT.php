@@ -16,9 +16,13 @@ class Alat_IoT extends Model
     ];
 
     // to get all data from table which id_kebun corresponds with the specified id_kebun
-    public function kebun($id_kebun) 
+    public function kebun($id_alat) 
     {
-        return $this->where('id_kebun', $id_kebun)->get();
+        return $this->where('id_alat', $id_alat)->get();
+    }
+
+    public function cariAlat($id_alat){
+        return $this->where('id_alat', $id_alat)->first();
     }
 
 

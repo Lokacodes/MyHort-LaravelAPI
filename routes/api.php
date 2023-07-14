@@ -38,6 +38,8 @@ Route::get('allKebuns', [KebunController::class,'all'])->middleware('auth:api');
 
 Route::apiResource('alats', AlatIotController::class);  //alat resource
 Route::get('allAlats', [AlatIotController::class,'all'])->middleware('auth:api'); //get all alats
+Route::patch('updateAlat',[AlatIotController::class,'update']);//->middleware('auth:api'); //update alat
+Route::delete('deleteAlat',[AlatIotController::class,'destroy']);//->middleware('auth:api'); //delete alat
 
 Route::apiResource('jadwals', JadwalSiramController::class)->middleware('auth:api');  //alat resource
 Route::get('allJadwals', [JadwalSiramController::class,'all'])->middleware('auth:api'); //get all alats

@@ -24,7 +24,7 @@ class AlatIotController extends Controller
     public function index(Request $request)
     {
         $alats = new Alat_IoT;
-        $data = $alats->kebun($request->id_kebun);
+        $data = $alats->kebun($request->id_alat);
         $dataLength = count($data);
         if ($dataLength == 0) {
             return response(['message'=> 'garden not found'],404);
@@ -54,7 +54,7 @@ class AlatIotController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'id_kebun' => 'required|unique:alat__io_t_s,id_kebun',
+            'id_alat' => 'required|unique:alat__io_t_s,id_alat',
         ]);
 
         if ($validator->fails()){
@@ -69,14 +69,24 @@ class AlatIotController extends Controller
     /**
      * Display the specified Alat that corresponds with the specified id.
      */
-    public function show(Alat_IoT $alat)//string $id
+    // public function show(Alat_IoT $alat)//string $id
+    // {
+    //     $alats = new Alat_IoT;
+    //     $data = $alats->kebun($alat);
+    //     if ($data === null) {
+    //         return response(['message'=> 'garden not found'],404);
+    //     }
+    //     return response(["alats" => new AlatResource($alat),'message'=> 'data successfully retrieved'],200);//diwehi 200?
+    // }
+
+    public function show(Alat_IoT $alat_IoT)//string $id
     {
         $alats = new Alat_IoT;
-        $data = $alats->kebun($alat);
+        $data = $alats->cariAlat($alat_IoT);
         if ($data === null) {
-            return response(['message'=> 'garden not found'],404);
+            return response(['message'=> $data],404);
         }
-        return response(["alats" => new AlatResource($alat),'message'=> 'data successfully retrieved'],200);//diwehi 200?
+        return response(["alats" => new AlatResource($data),'message'=> 'data successfully retrieved'],200);//diwehi 200?
     }
 
     /**
@@ -90,18 +100,38 @@ class AlatIotController extends Controller
     /**
      * Update the specified Alat that corresponds with the specified id in database.
      */
-    public function update(Request $request, Alat_IoT $alat)
+    // public function update(Request $request, Alat_IoT $alat)
+    // {
+    //     if ($alat === null) {
+    //         return response(['message'=> $alat],404);
+    //     }
+    //     $alat->update($request->all());
+    //     return response(["alats" => new AlatResource($alat),'message'=> 'data successfully updated'],200);//diwehi 200?
+    // }
+
+    public function update(Request $request)
     {
-        $alat->update($request->all());
-        return response(["alats" => new AlatResource($alat),'message'=> 'data successfully updated'],200);//diwehi 200?
+        $alat = new Alat_IoT;
+        $data = $alat->cariAlat($request->id_alat);
+        if ($data === null) {
+            return response(['message'=> 'data not found'],404);
+        }
+        // return response(["alats"=> $data],200);
+        $data->update($request->all());
+        return response(["alats" => new AlatResource($data),'message'=> 'data successfully updated'],200);//diwehi 200?
     } 
 
     /**
      * Remove the specified Alat from database.
      */
-    public function destroy(Alat_IoT $alat)
+    public function destroy(Request $request)
     {
-        $alat->delete();
+        $alat = new Alat_IoT;
+        $data = $alat->cariAlat($request->id_alat);
+        if ($data === null) {
+            return response(['message'=> 'data not found'],404);
+        }
+        $data->delete();
         return response(['message'=>'Data deleted']);
     }
 }
