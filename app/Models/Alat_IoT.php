@@ -25,5 +25,9 @@ class Alat_IoT extends Model
         return $this->where('id_alat', $id_alat)->first();
     }
 
+    public function IDAlat(String $id_alat){
+        return $this->where('id_alat', $id_alat)->first();
+    }
+
 
 }
