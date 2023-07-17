@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_kebun');
             $table->string('lokasi_kebun');
             $table->foreignId('id_user')->constrained('users');
+            $table->string('id_alat');
             $table->timestamps();
         });
     }
