@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Models\Kebun;
+use App\Models\Alat_IoT;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
@@ -43,7 +44,7 @@ class KebunController extends Controller
     {
        
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -51,19 +52,43 @@ class KebunController extends Controller
     {
         $data = $request->all();
 
+        $this->checkIDAlat($request);
+
         $validator = Validator::make($data, [
             'nama_kebun' => 'required|max:255',
             'lokasi_kebun' => 'required|max:255',
             'id_user' => 'required',
+            'id_alat' => 'required|unique:kebuns',
         ]);
 
         if ($validator->fails()){
-            return response(['error'=>$validator->errors(),'kebun data not valid!']);
+            return response(['message'=>$validator->errors()],403);
         }
 
         $kebun = Kebun::create($data);
 
         return response(["kebun" => new KebunResource($kebun),'message'=> 'data successfully added'],200);//diwehi 200?
+    }
+
+    public function checkIDAlat(Request $request)
+    {
+        $data = $request->all();
+
+        $id_alat = $data['id_alat'];
+
+        $kebun = new Kebun;
+        $IoT = new Alat_IoT;
+
+        $alatKebun = $kebun->IDAlat($id_alat);
+        $alatIoT = $IoT->IDAlat($id_alat);
+        
+        if ($alatKebun != null && $alatIoT != null) {
+            return response(['message'=>'id alat already used'],403);
+        } else if ($alatIoT == null) {
+            return response(['message'=>'id alat is not registered'],403);
+        }
+
+        return response(['message'=>'id alat can be used'],200);
     }
 
     /**
