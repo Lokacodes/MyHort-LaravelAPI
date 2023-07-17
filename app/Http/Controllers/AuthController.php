@@ -40,19 +40,20 @@ class AuthController extends Controller
         //     'email' => 'required|unique:users|email',
         //     'password' => 'required|max:16|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         // ]);
+        $data = $request->all();
         
-        $validatedData = $request->validate([
+        $validatedData = Validator::make($data,[
             'name' => 'required|max:60|min:5',
             'email' => 'required|unique:users|email',
             'password' => 'required|max:16|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         ]);
         
-        // if ($validatedData->fails()) {
+        if ($validatedData->fails()) {
     
-        // //pass validator errors as errors object for ajax response
+        //pass validator errors as errors object for ajax response
 
-        //   return response(['errors'=>$validatedData->errors()],422);
-        // }
+          return response(['errors'=>$validatedData->errors()],422);
+        }
         
         $data = $request->all();
 
