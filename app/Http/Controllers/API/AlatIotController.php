@@ -4,11 +4,13 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Models\Alat_IoT;
+use App\Models\JadwalSiram;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Resources\AlatResource;
+use App\Http\Resources\jadwalResource;
 
 /**
  * @group Alat_IoT Management
@@ -24,12 +26,14 @@ class AlatIotController extends Controller
     public function index(Request $request)
     {
         $alats = new Alat_IoT;
+        $jadwals = new JadwalSiram;
         $data = $alats->kebun($request->id_alat);
+        $jadwal = $jadwals->alat($request->id_alat);
         $dataLength = count($data);
         if ($dataLength == 0) {
             return response(['message'=> 'garden not found'],404);
         }
-        return response(['alats' => AlatResource::collection($data), 'message' => "Data successfully retrieved"], 200);
+        return response(['alats' => AlatResource::collection($data), 'jadwals' => jadwalResource::collection($jadwal), 'message' => "Data successfully retrieved"], 200);
     }
 
     public function all()
