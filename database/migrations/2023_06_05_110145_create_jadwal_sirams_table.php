@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jadwal_sirams', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_alat');
+            $table->string('id_alat');
             $table->time('jam_on');
             $table->time('jam_off');
             $table->timestamps();
