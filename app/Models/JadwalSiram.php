@@ -23,6 +23,6 @@ class JadwalSiram extends Model
 
     public function alat($id_alat)
     {
-        return $this->where('id_alat', $id_alat)->get();
+        return $this->where('id_alat', $id_alat)->take(4)->get();
     }
 }
