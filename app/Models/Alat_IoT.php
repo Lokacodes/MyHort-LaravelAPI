@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alat_IoT extends Model
 {
-    use HasFactory;
+    use HasFactory; 
 
     protected $table = 'alat__io_t_s'; //table name in migration
     protected $guarded = [ //the field that cannot be mass assigned / the opposite of fillable

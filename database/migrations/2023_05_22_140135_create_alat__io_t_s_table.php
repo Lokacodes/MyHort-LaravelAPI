@@ -18,8 +18,8 @@ return new class extends Migration
             $table->float('tinggi_tandon')->default(0);
             $table->float('sensor_suhu')->default(0);
             $table->float('sensor_kelembapan')->default(0);
-            $table->boolean('solenoid_tandon')->default(0);
-            $table->boolean('solenoid_siram')->default(0);
+            $table->string('solenoid_tandon')->default("mati");
+            $table->string('solenoid_siram')->default("mati");
             $table->string('id_alat');
             $table->timestamps();
         });

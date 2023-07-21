@@ -41,8 +41,8 @@ class JadwalSiramController extends Controller
         $data = $request->all();
         $data['jam_on'] = strtotime($data['jam_on']);
         $data['jam_off'] = strtotime($data['jam_off']);
-        $data['jam_on'] = date('H:i:s', $data['jam_on']);
-        $data['jam_off'] = date('H:i:s', $data['jam_off']);
+        $data['jam_on'] = date('H:i', $data['jam_on']);
+        $data['jam_off'] = date('H:i', $data['jam_off']);
 
         if ($data['jam_on'] == $data['jam_off']) {
             return response(['message' => 'ON and OFF time cannot be the same'],422);
@@ -111,8 +111,8 @@ class JadwalSiramController extends Controller
         $data = $request->all();
         $data['jam_on'] = strtotime($data['jam_on']);
         $data['jam_off'] = strtotime($data['jam_off']);
-        $data['jam_on'] = date('H:i:s', $data['jam_on']);
-        $data['jam_off'] = date('H:i:s', $data['jam_off']);
+        $data['jam_on'] = date('H:i', $data['jam_on']);
+        $data['jam_off'] = date('H:i', $data['jam_off']);
 
         if ($data['jam_on'] == $data['jam_off']) {
             return response(['message' => 'ON and OFF time cannot be the same'],422);

@@ -28,7 +28,7 @@ class AlatIotController extends Controller
         $alats = new Alat_IoT;
         $jadwals = new JadwalSiram;
         $data = $alats->kebun($request->id_alat);
-        $jadwal = $jadwals->alat($request->id_alat);
+        $jadwal = $jadwals->alat($request->id_alat); 
         $dataLength = count($data);
         if ($dataLength == 0) {
             return response(['message'=> 'garden not found'],404);
