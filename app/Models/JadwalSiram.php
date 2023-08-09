@@ -12,7 +12,7 @@ class JadwalSiram extends Model
     protected $table = 'jadwal_sirams';
 
     protected $guarded = [
-        'id',
+        'id', 
         'timestamps'
     ];
 

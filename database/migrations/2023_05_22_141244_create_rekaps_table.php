@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float('sensor_kepekatan');
             $table->float('sensor_penuh');
             $table->boolean('solenoid_tandon');
-            $table->boolean('solenoid_siram');
+            $table->boolean('solenoid_siram'); 
             $table->integer('id_alat');
             $table->timestamps();
         });

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('jadwal_sirams', function (Blueprint $table) {
             $table->id();
-            $table->string('id_alat');
-            $table->time('jam_on');
-            $table->time('jam_off');
+            $table->string('id_alat')->constrained('alat__io_t_s');
+            $table->string('jam_on'); 
+            $table->string('jam_off');
             $table->timestamps();
 
         });

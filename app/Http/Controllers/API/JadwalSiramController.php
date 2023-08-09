@@ -38,6 +38,12 @@ class JadwalSiramController extends Controller
      */
     public function store(Request $request)
     {
+        $jadwalsiram = new JadwalSiram();
+        $existing = $jadwalsiram->alat($request->id_alat);
+        if (count($existing) >= 4) {
+            return response(['message' => 'You have reached the maximum number of schedules'],422);
+        }
+
         $data = $request->all();
         $data['jam_on'] = strtotime($data['jam_on']);
         $data['jam_off'] = strtotime($data['jam_off']);
@@ -47,9 +53,8 @@ class JadwalSiramController extends Controller
         if ($data['jam_on'] == $data['jam_off']) {
             return response(['message' => 'ON and OFF time cannot be the same'],422);
         }
-        else if ($data['jam_on'] > $data['jam_off']) {
-            return response(['message' => 'ON time cannot be greater than OFF time'],422);
-        }
+
+        //CHANGED HERE
 
         $jadwalSiramObj = new JadwalSiram();
         $alljadwal = $jadwalSiramObj->alat($request->id_alat);

@@ -13,7 +13,7 @@ class rekap extends Model
     protected $guarded = [
         'id',
         'timestamps'
-    ];
+    ]; 
 
     public function alat_iot()
     {

@@ -43,14 +43,6 @@ class AlatIotController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-       
-    }
-
-    /**
      * Store a newly created Alat in database.
      */
     public function store(Request $request) 
@@ -70,19 +62,6 @@ class AlatIotController extends Controller
         return response(["alats" => new AlatResource($alat),'message'=> 'data successfully added'],200);//diwehi 200?
     }
 
-    /**
-     * Display the specified Alat that corresponds with the specified id.
-     */
-    // public function show(Alat_IoT $alat)//string $id
-    // {
-    //     $alats = new Alat_IoT;
-    //     $data = $alats->kebun($alat);
-    //     if ($data === null) {
-    //         return response(['message'=> 'garden not found'],404);
-    //     }
-    //     return response(["alats" => new AlatResource($alat),'message'=> 'data successfully retrieved'],200);//diwehi 200?
-    // }
-
     public function show(Alat_IoT $alat_IoT)//string $id
     {
         $alats = new Alat_IoT;
@@ -92,26 +71,6 @@ class AlatIotController extends Controller
         }
         return response(["alats" => new AlatResource($data),'message'=> 'data successfully retrieved'],200);//diwehi 200?
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified Alat that corresponds with the specified id in database.
-     */
-    // public function update(Request $request, Alat_IoT $alat)
-    // {
-    //     if ($alat === null) {
-    //         return response(['message'=> $alat],404);
-    //     }
-    //     $alat->update($request->all());
-    //     return response(["alats" => new AlatResource($alat),'message'=> 'data successfully updated'],200);//diwehi 200?
-    // }
 
     public function update(Request $request)
     {
